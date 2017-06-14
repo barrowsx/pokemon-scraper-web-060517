@@ -1,4 +1,5 @@
 require_relative "spec_helper"
+require 'pry'
 
 describe "Pokemon" do
   before do
@@ -21,8 +22,8 @@ describe "Pokemon" do
 
   describe ".save" do
     it 'saves an instance of a pokemon with the correct id' do
+      #binding.pry
       Pokemon.save("Pikachu", "electric", @db)
-
       pikachu_from_db = @db.execute("SELECT * FROM pokemon WHERE name = 'Pikachu'")
       expect(pikachu_from_db).to eq([[1, "Pikachu", "electric"]])
     end
